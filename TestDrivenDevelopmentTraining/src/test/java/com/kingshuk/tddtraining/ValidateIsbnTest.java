@@ -1,5 +1,6 @@
 package com.kingshuk.tddtraining;
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import org.junit.After;
@@ -32,10 +33,11 @@ public class ValidateIsbnTest {
 		
 		ValidateISBN validator = new ValidateISBN();
 		
-		boolean isIsbnValid=validator.checkIsbn(8173666024);
+		boolean isIsbnValid=validator.checkIsbn(8173666024l);
 		
 		//Next we write what do we expect the result to be. That is what
-		//We can assertion
+		//We call assertion
+		assertTrue(isIsbnValid);
 		
 	}
 
