@@ -36,9 +36,12 @@ public class ValidateIsbnTest {
 		
 		boolean isIsbnValid=validator.checkIsbn(8173666024l);
 		
+		boolean isSecondIsbnValid = validator.checkIsbn(9789387432291l);
+		
 		//Next we write what do we expect the result to be. That is what
 		//We call assertion
 		assertTrue(isIsbnValid);
+		assertTrue(isSecondIsbnValid);
 		
 	}
 	
