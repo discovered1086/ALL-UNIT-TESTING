@@ -1,5 +1,6 @@
 package com.kingshuk.tddtraining;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
@@ -38,6 +39,20 @@ public class ValidateIsbnTest {
 		//Next we write what do we expect the result to be. That is what
 		//We call assertion
 		assertTrue(isIsbnValid);
+		
+	}
+	
+	@Test
+	public void checkInvalidIsbn() {
+		//fail("Not yet implemented");
+		
+		ValidateISBN validator = new ValidateISBN();
+		
+		boolean isIsbnValid=validator.checkIsbn(8173666824l);
+		
+		//Next we write what do we expect the result to be. That is what
+		//We call assertion
+		assertFalse(isIsbnValid);
 		
 	}
 
