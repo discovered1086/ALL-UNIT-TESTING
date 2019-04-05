@@ -1,21 +1,24 @@
 package mypractice.unittesting.mockito.model.dao;
 
-import mypractice.unittesting.mockito.model.TaskModel;
-import mypractice.unittesting.mockito.utility.ConnectionManager;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-import org.mockito.internal.matchers.Null;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.atLeast;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import java.lang.reflect.Field;
 import java.sql.SQLException;
 import java.util.List;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.*;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+
+import mypractice.unittesting.mockito.model.TaskModel;
+import mypractice.unittesting.mockito.utility.ConnectionManager;
 
 /**
  * Created by kingshuk on 9/2/17.
@@ -23,6 +26,7 @@ import static org.mockito.Mockito.*;
 
 public class TaskManagementDAOImplTest {
 
+	@InjectMocks
     private TaskManagementDAO taskManagementDAO;
 
     @Mock
