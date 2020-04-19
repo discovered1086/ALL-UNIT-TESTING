@@ -1,4 +1,4 @@
-package com.kingshuk.testing.practice;
+package com.kingshuk.testing.practice.junit5;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -11,10 +11,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
@@ -30,7 +29,7 @@ public class TaskManagerServiceImplTest {
 	@Mock
 	private TaskManagementDAO taskManagementDAO;
 
-	@BeforeEach
+	@Before
 	public void setUp() throws Exception {
 		// This is essentially the stubbing part., step 1 of mocking
 		// This line should always come before other configuration
@@ -94,7 +93,7 @@ public class TaskManagerServiceImplTest {
 
 	}
 
-	@Test
+	@Test(expected = TaskManagementException.class)
 	public void addTask_should_throw_exception() throws Exception {
 		// Here the add task method calls the DAO method addTask(). So we want to mock
 		// out that method call
@@ -118,10 +117,7 @@ public class TaskManagerServiceImplTest {
 		// After I have forced the the expectation to be true, am making a call to the
 		// actual service method
 		// Does it actually call the DAO here? not sure
-
-		Assertions.assertThrows(TaskManagementException.class, () -> {
-			taskManagementService.addTask(null);
-		});
+		taskManagementService.addTask(null);
 
 		// And then am asserting if the result is indeed true.
 
@@ -143,7 +139,7 @@ public class TaskManagerServiceImplTest {
 
 	}
 
-	@Test
+	@Test(expected = TaskManagementException.class)
 	public void addTask_should_throw_sql_exception() throws Exception {
 		// Here the add task method calls the DAO method addTask(). So we want to mock
 		// out that method call
@@ -172,9 +168,7 @@ public class TaskManagerServiceImplTest {
 		// After I have forced the the expectation to be true, am making a call to the
 		// actual service method
 		// Does it actually call the DAO here? not sure
-		Assertions.assertThrows(TaskManagementException.class, () -> {
-			taskManagementService.addTask(taskModel);
-		});
+		taskManagementService.addTask(taskModel);
 
 		// And then am asserting if the result is indeed true.
 
@@ -266,26 +260,22 @@ public class TaskManagerServiceImplTest {
 		verify(taskManagementDAO, atLeastOnce()).getAllTask();
 	}
 
-	@Test
+	@Test(expected = TaskManagementException.class)
 	public void getAllTask_throw_Exception() throws Exception {
 
 		when(taskManagementDAO.getAllTask()).thenThrow(new NullPointerException());
 
-		Assertions.assertThrows(TaskManagementException.class, () -> {
-			taskManagementService.getAllTask();
-		});
+		taskManagementService.getAllTask();
 
 		verify(taskManagementDAO, atLeastOnce()).getAllTask();
 	}
 
-	@Test
+	@Test(expected = TaskManagementException.class)
 	public void getAllTask_throw_SQLException() throws Exception {
 
 		when(taskManagementDAO.getAllTask()).thenThrow(new SQLException());
 
-		Assertions.assertThrows(TaskManagementException.class, () -> {
-			taskManagementService.getAllTask();
-		});
+		taskManagementService.getAllTask();
 
 		verify(taskManagementDAO, atLeastOnce()).getAllTask();
 	}
@@ -328,7 +318,7 @@ public class TaskManagerServiceImplTest {
 		verify(taskManagementDAO, atLeastOnce()).updateTask(taskModel);
 	}
 
-	@Test
+	@Test(expected = TaskManagementException.class)
 	public void updateTask_throws_SQLException_on_title() throws Exception {
 		TaskModel taskModel = new TaskModel();
 		taskModel.setTaskId(10);
@@ -337,9 +327,9 @@ public class TaskManagerServiceImplTest {
 
 		when(taskManagementDAO.updateTask(taskModel)).thenThrow(new SQLException());
 
-		Assertions.assertThrows(TaskManagementException.class, () -> {
-			taskManagementService.updateTask(taskModel);
-		});
+		// assertFalse(taskManagementService.updateTask(taskModel));
+
+		taskManagementService.updateTask(taskModel);
 
 		verify(taskManagementDAO, atLeastOnce()).updateTask(taskModel);
 	}
@@ -348,7 +338,7 @@ public class TaskManagerServiceImplTest {
 	public void deleteTask() throws Exception {
 	}
 
-	@AfterEach
+	@After
 	public void tearDown() throws Exception {
 		taskManagementService = null;
 	}
