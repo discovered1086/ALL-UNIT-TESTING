@@ -3,9 +3,8 @@ package com.kingshuk.testing.practice;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.atLeastOnce;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
+
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -90,7 +89,7 @@ public class TaskManagerServiceImplTest {
 		// mocking
 
 		// Verify method can be used to see if the stubbed method got called.
-		verify(taskManagementDAO, atLeastOnce()).addTask(taskModel);
+		verify(taskManagementDAO).addTask(taskModel);
 
 	}
 
@@ -192,7 +191,7 @@ public class TaskManagerServiceImplTest {
 		// mocking
 
 		// Verify method can be used to see if the stubbed method got called.
-		verify(taskManagementDAO, atLeastOnce()).addTask(taskModel);
+		verify(taskManagementDAO, times(1)).addTask(taskModel);
 
 	}
 
