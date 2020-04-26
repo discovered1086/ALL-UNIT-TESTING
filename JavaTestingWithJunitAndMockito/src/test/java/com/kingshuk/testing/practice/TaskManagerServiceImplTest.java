@@ -14,6 +14,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
@@ -65,7 +66,7 @@ public class TaskManagerServiceImplTest {
 		// method of the DAO class then
 		// it returns true. Here am forcing the stubbed object to return true when I
 		// make a call to the DAO method.
-		when(taskManagementDAO.addTask(taskModel)).thenReturn(true);
+		when(taskManagementDAO.addTask(ArgumentMatchers.any(TaskModel.class))).thenReturn(true);
 
 		// This is the assertion or verification of results....step 3 of mocking
 		// After I have forced the the expectation to be true, am making a call to the
