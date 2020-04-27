@@ -1,4 +1,4 @@
-package com.kingshuk.testing.practice.test;
+package com.kingshuk.testing.practice.simpleclassesfortest;
 
 public class StringTest {
 	public StringTest() {

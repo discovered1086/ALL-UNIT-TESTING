@@ -1,4 +1,4 @@
-package com.kingshuk.testing.practice.test;
+package com.kingshuk.testing.practice.simpleclassesfortest;
 
 import com.kingshuk.testing.practice.exceptions.TaskManagementException;
 import com.kingshuk.testing.practice.model.TaskModel;
