@@ -10,8 +10,5 @@ public interface TaskManagementDAO {
 
     List<TaskModel> getAllTask() throws SQLException, ClassNotFoundException;
 
-    boolean updateTask(TaskModel taskModel) throws SQLException, ClassNotFoundException;
-
-    boolean deleteTask(Integer taskId) throws SQLException, ClassNotFoundException;
 
 }

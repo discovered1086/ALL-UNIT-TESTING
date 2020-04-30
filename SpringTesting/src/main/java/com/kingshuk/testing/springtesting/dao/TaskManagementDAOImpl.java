@@ -23,16 +23,4 @@ public class TaskManagementDAOImpl implements TaskManagementDAO {
 		return new ArrayList<>(taskList);
 	}
 
-	@Override
-	public boolean updateTask(TaskModel taskModel) throws SQLException, ClassNotFoundException {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean deleteTask(Integer taskId) throws SQLException, ClassNotFoundException {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 }

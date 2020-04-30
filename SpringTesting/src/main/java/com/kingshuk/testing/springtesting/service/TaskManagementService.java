@@ -11,9 +11,5 @@ public interface TaskManagementService {
 
     List<TaskModel> getAllTask() throws TaskManagementException;
 
-    boolean updateTask(TaskModel taskModel) throws TaskManagementException;
-
-    boolean deleteTask(Integer taskId) throws TaskManagementException;
-
     void setTaskManagementDAO(TaskManagementDAO taskManagementDAO);
 }

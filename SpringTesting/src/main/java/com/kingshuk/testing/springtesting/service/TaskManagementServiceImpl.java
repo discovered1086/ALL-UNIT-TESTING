@@ -34,26 +34,6 @@ public class TaskManagementServiceImpl implements TaskManagementService {
 		}
 	}
 
-	@Override
-	public boolean updateTask(TaskModel taskModel) throws TaskManagementException {
-		try {
-			return taskManagementDAO.updateTask(taskModel);
-		} catch (Exception ex) {
-			ex.printStackTrace();
-			throw new TaskManagementException(ex);
-		}
-	}
-
-	@Override
-	public boolean deleteTask(Integer taskId) throws TaskManagementException {
-		try {
-			return taskManagementDAO.deleteTask(taskId);
-		} catch (Exception ex) {
-			ex.printStackTrace();
-			throw new TaskManagementException(ex);
-		}
-	}
-
 	@Autowired
 	public void setTaskManagementDAO(TaskManagementDAO taskManagementDAO) {
 		this.taskManagementDAO = taskManagementDAO;
