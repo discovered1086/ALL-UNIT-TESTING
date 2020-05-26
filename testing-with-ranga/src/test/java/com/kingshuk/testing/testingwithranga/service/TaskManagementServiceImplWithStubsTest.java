@@ -1,16 +1,17 @@
 package com.kingshuk.testing.testingwithranga.service;
 
-import com.kingshuk.testing.testingwithranga.exceptions.TaskManagementException;
-import com.kingshuk.testing.testingwithranga.model.TaskModel;
-import com.kingshuk.testing.testingwithranga.model.dao.TaskManagementDAO;
-import com.kingshuk.testing.testingwithranga.model.utility.ConnectionManager;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import org.junit.Test;
+
+import com.kingshuk.testing.testingwithranga.exceptions.TaskManagementException;
+import com.kingshuk.testing.testingwithranga.model.TaskModel;
+import com.kingshuk.testing.testingwithranga.model.dao.TaskManagementDAO;
+import com.kingshuk.testing.testingwithranga.model.utility.ConnectionManager;
 
 class TaskManagementDAOImpl implements TaskManagementDAO {
 
