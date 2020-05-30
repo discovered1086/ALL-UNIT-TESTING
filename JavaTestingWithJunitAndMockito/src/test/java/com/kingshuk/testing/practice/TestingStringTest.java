@@ -3,8 +3,8 @@ package com.kingshuk.testing.practice;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import com.kingshuk.testing.practice.test.PlayingWithString;
-import com.kingshuk.testing.practice.test.StringTest;
+import com.kingshuk.testing.practice.simpleclassesfortest.PlayingWithString;
+import com.kingshuk.testing.practice.simpleclassesfortest.StringTest;
 
 public class TestingStringTest {
 
