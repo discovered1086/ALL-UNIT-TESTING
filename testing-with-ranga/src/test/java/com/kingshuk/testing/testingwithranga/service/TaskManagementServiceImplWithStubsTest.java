@@ -43,7 +43,7 @@ class TaskManagementDAOImpl implements TaskManagementDAO {
 
 public class TaskManagementServiceImplWithStubsTest {
 
-    private TaskManagementDAO taskManagementDAO;
+    //private TaskManagementDAO taskManagementDAO;
 
     @Test
     public void getAllTask() throws TaskManagementException {
