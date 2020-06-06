@@ -14,11 +14,33 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter'
-	testImplementation('org.springframework.boot:spring-boot-starter-test') {
-		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-	}
+	
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	
+	// https://mvnrepository.com/artifact/org.projectlombok/lombok
+	compile group: 'org.projectlombok', name: 'lombok', version: '1.18.12'
+
+	// https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
+	testCompile group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'
+	
+	// https://mvnrepository.com/artifact/commons-io/commons-io
+	testCompile group: 'commons-io', name: 'commons-io', version: '2.6'
 }
 
 test {
 	useJUnitPlatform()
+}
+
+sourceSets{
+	main{
+		java.srcDirs 'src/main/java'
+		resources.srcDirs 'src/main/resources'
+	}
+
+	test{
+		java.srcDirs 'src/test/java'
+		resources.srcDirs 'src/test/resources'
+	}
 }
