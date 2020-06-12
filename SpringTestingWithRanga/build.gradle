@@ -17,7 +17,11 @@ dependencies {
 	
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	
+	implementation 'com.h2database:h2'
 	
 	// https://mvnrepository.com/artifact/org.projectlombok/lombok
 	compile group: 'org.projectlombok', name: 'lombok', version: '1.18.12'
@@ -27,6 +31,20 @@ dependencies {
 	
 	// https://mvnrepository.com/artifact/commons-io/commons-io
 	testCompile group: 'commons-io', name: 'commons-io', version: '2.6'
+	
+	// https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core
+	compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.11.0'
+	
+	
+	// https://mvnrepository.com/artifact/net.sf.dozer/dozer
+	compile group: 'net.sf.dozer', name: 'dozer', version: '5.5.1'
+	
+	// https://mvnrepository.com/artifact/net.sf.dozer/dozer-spring
+	compile group: 'net.sf.dozer', name: 'dozer-spring', version: '5.5.1'
+	
+	// https://mvnrepository.com/artifact/net.sf.dozer/dozer-spring
+	compile group: 'io.craftsman', name: 'dozer-jdk8-support', version: '1.0.6'
+	
 }
 
 test {

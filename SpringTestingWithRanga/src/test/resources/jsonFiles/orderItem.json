@@ -1,8 +1,9 @@
 {
-	"orderId": "1",
+	"orderItemId": "1",
 	"orderDate": "2020-06-05",
 	"product": {
 		"productId": "8878",
-		"productName": "Nike Shoe"
+		"productName": "Nike Shoe",
+		"productPrice": 50.65
 	}
 }

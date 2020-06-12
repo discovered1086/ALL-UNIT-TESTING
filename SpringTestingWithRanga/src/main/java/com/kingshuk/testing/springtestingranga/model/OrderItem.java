@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class OrderItem {
 	
-	private String orderId;
+	private String orderItemId;
 	
 	private LocalDate orderDate;
 	
