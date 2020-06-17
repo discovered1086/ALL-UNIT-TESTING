@@ -18,7 +18,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.util.ReflectionTestUtils;
 
-import com.kingshuk.testing.springtestingranga.configuration.ApplicationConfiguration;
+import com.kingshuk.testing.springtestingranga.configuration.ApplicationTestConfiguration;
 import com.kingshuk.testing.springtestingranga.data.dao.OrderItemRepository;
 import com.kingshuk.testing.springtestingranga.data.model.OrderItemEntity;
 import com.kingshuk.testing.springtestingranga.data.model.ProductEntity;
@@ -27,7 +27,7 @@ import com.kingshuk.testing.springtestingranga.model.Product;
 import com.kingshuk.testing.springtestingranga.service.OrderItemBusinessService;
 
 @RunWith(SpringRunner.class)
-@ContextConfiguration(classes = { ApplicationConfiguration.class })
+@ContextConfiguration(classes = { ApplicationTestConfiguration.class })
 public class OrderItemBusinessServiceTest {
 
 	@MockBean
