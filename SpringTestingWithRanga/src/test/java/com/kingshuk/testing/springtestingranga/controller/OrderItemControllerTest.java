@@ -7,6 +7,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Arrays;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -69,11 +70,38 @@ public class OrderItemControllerTest {
 
 	}
 
+	@Test
+	public void allOrderItemsFromDatabaseTestWithBusiinessLayer() throws Exception {
+		OrderItem orderItem = OrderItem.builder().orderItemId("1").orderDate(LocalDate.now()).product(Product.builder()
+				.productId("8878").productName("Nike Shoe").productPrice(BigDecimal.valueOf(50.65)).build()).build();
+
+		OrderItem orderItem2 = OrderItem.builder().orderItemId("2").orderDate(LocalDate.now()).product(Product.builder()
+				.productId("8879").productName("Adidaas Shoe").productPrice(BigDecimal.valueOf(54.65)).build()).build();
+
+		when(businessService.getAllOrderItem()).thenReturn(Arrays.asList(orderItem, orderItem2));
+
+		// Construct the request
+		RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/all-items-from-database")
+				.accept(MediaType.APPLICATION_JSON);
+
+		// Perform the action and match results
+		mockMvc.perform(requestBuilder).andExpect(status().isOk())
+				.andExpect(content().json(updatedExpectedResponse("multipleOrderItems.json"), true));
+
+	}
+
 	private String updatedExpectedResponse(String fileName) throws IOException {
 		Resource resource = new ClassPathResource("jsonFiles/" + fileName);
 
 		JsonNode rootNode = objectMapper.readTree(resource.getInputStream());
-		((ObjectNode) rootNode).set("orderDate", JsonNodeFactory.instance.textNode(LocalDate.now().toString()));
+		if (rootNode.isArray()) {
+			for (JsonNode elementNode : rootNode) {
+				((ObjectNode) elementNode).set("orderDate",
+						JsonNodeFactory.instance.textNode(LocalDate.now().toString()));
+			}
+		} else {
+			((ObjectNode) rootNode).set("orderDate", JsonNodeFactory.instance.textNode(LocalDate.now().toString()));
+		}
 
 		return objectMapper.writeValueAsString(rootNode);
 	}

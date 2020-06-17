@@ -45,6 +45,8 @@ dependencies {
 	// https://mvnrepository.com/artifact/net.sf.dozer/dozer-spring
 	compile group: 'io.craftsman', name: 'dozer-jdk8-support', version: '1.0.6'
 	
+	compile 'org.assertj:assertj-core:3.16.1'
+	
 }
 
 test {
