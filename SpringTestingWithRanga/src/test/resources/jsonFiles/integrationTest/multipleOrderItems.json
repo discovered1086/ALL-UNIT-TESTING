@@ -1,0 +1,38 @@
+[
+	{
+		"orderItemId": "1",
+		"orderDate": "2020-06-11",
+		"product": {
+			"productId": "8878",
+			"productName": "Nike Shoe",
+			"productPrice": 50.65
+		}
+	},
+	{
+		"orderItemId": "2",
+		"orderDate": "2020-06-11",
+		"product": {
+			"productId": "8878",
+			"productName": "Nike Shoe",
+			"productPrice": 50.65
+		}
+	},
+	{
+		"orderItemId": "3",
+		"orderDate": "2020-06-11",
+		"product": {
+			"productId": "8879",
+			"productName": "Adidaas Shoe",
+			"productPrice": 54.65
+		}
+	},
+	{
+		"orderItemId": "4",
+		"orderDate": "2020-06-11",
+		"product": {
+			"productId": "8879",
+			"productName": "Adidaas Shoe",
+			"productPrice": 54.65
+		}
+	}
+]

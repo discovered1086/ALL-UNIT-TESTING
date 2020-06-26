@@ -17,6 +17,7 @@ import org.springframework.boot.test.mock.mockito.SpyBean;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.kingshuk.testing.springtestingranga.configuration.ApplicationConfiguration;
 import com.kingshuk.testing.springtestingranga.configuration.ApplicationTestConfiguration;
 import com.kingshuk.testing.springtestingranga.data.dao.OrderItemRepository;
 import com.kingshuk.testing.springtestingranga.data.model.OrderItemEntity;
@@ -26,7 +27,7 @@ import com.kingshuk.testing.springtestingranga.model.Product;
 import com.kingshuk.testing.springtestingranga.service.OrderItemBusinessService;
 
 @RunWith(SpringRunner.class)
-@SpringJUnitConfig(classes = {ApplicationTestConfiguration.class})
+@SpringJUnitConfig(classes = {ApplicationConfiguration.class, ApplicationTestConfiguration.class})
 public class OrderItemBusinessServiceImprovedTest {
 
 	@MockBean
@@ -67,7 +68,5 @@ public class OrderItemBusinessServiceImprovedTest {
 		assertThat(allOrderItem).asList().containsExactlyInAnyOrder(orderItem1, orderItem2);
 
 	}
-	
-	
 
 }

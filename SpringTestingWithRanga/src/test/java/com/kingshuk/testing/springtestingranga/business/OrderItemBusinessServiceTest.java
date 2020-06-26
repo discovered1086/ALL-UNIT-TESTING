@@ -12,13 +12,16 @@ import org.dozer.Mapper;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.mock.mockito.SpyBean;
-import org.springframework.test.context.ContextConfiguration;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.util.ReflectionTestUtils;
 
-import com.kingshuk.testing.springtestingranga.configuration.ApplicationTestConfiguration;
+import com.kingshuk.testing.springtestingranga.business.OrderItemBusinessServiceTest.ApplicationTestLocalConfiguration;
+import com.kingshuk.testing.springtestingranga.configuration.ApplicationConfiguration;
 import com.kingshuk.testing.springtestingranga.data.dao.OrderItemRepository;
 import com.kingshuk.testing.springtestingranga.data.model.OrderItemEntity;
 import com.kingshuk.testing.springtestingranga.data.model.ProductEntity;
@@ -27,7 +30,7 @@ import com.kingshuk.testing.springtestingranga.model.Product;
 import com.kingshuk.testing.springtestingranga.service.OrderItemBusinessService;
 
 @RunWith(SpringRunner.class)
-@ContextConfiguration(classes = { ApplicationTestConfiguration.class })
+@SpringJUnitConfig(classes = {ApplicationConfiguration.class, ApplicationTestLocalConfiguration.class})
 public class OrderItemBusinessServiceTest {
 
 	@MockBean
@@ -73,6 +76,11 @@ public class OrderItemBusinessServiceTest {
 		assertThat(allOrderItem).isNotEmpty();
 		assertThat(allOrderItem).asList().containsExactlyInAnyOrder(orderItem1, orderItem2);
 
+	}
+	
+	@TestConfiguration
+	@ComponentScan(basePackages = "com.kingshuk.testing.springtestingranga.service")
+	public static class ApplicationTestLocalConfiguration{
 	}
 
 }
