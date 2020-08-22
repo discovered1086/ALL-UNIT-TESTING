@@ -4,9 +4,9 @@ import java.io.IOException;
 import java.time.LocalDate;
 
 import org.json.JSONException;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.web.client.TestRestTemplate;
@@ -20,14 +20,20 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
+
+
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @TestPropertySource(locations = {"classpath:test.properties"})
 public class OrderItemControllerIT {
 	
-	@Autowired
 	private TestRestTemplate restTemplate;
 	
 	private ObjectMapper objectMapper = new ObjectMapper();
+	
+	@Before
+	public void setUp() {
+		restTemplate = new TestRestTemplate();
+	}
 
 	@Test
 	public void test() throws IOException, JSONException {

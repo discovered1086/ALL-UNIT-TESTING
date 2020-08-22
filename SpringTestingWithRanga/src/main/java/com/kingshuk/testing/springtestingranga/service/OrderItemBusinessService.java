@@ -51,5 +51,12 @@ public class OrderItemBusinessService {
 
 		return orderItems;
 	}
+	
+	public String addOrderItem(OrderItem orderItem) {
+		OrderItemEntity orderItemEntity = mapper.map(orderItem, OrderItemEntity.class);
+		OrderItemEntity savedEntity = orderItemRepository.save(orderItemEntity);
+		
+		return String.valueOf(savedEntity.getOrderItemId());
+	}
 
 }

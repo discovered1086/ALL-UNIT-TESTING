@@ -2,6 +2,7 @@ package com.kingshuk.testing.springtestingranga.controller;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.io.IOException;
@@ -9,6 +10,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Arrays;
 
+import org.hamcrest.CoreMatchers;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -87,6 +90,26 @@ public class OrderItemControllerTest {
 		// Perform the action and match results
 		mockMvc.perform(requestBuilder).andExpect(status().isOk())
 				.andExpect(content().json(updatedExpectedResponse("multipleOrderItems.json"), true));
+
+	}
+
+	@Test
+	public void createOrderItemsTest() throws Exception {
+		OrderItem orderItem = OrderItem.builder().orderDate(LocalDate.now()).product(Product.builder().productId("8878")
+				.productName("Nike Shoe").productPrice(BigDecimal.valueOf(50.65)).build()).build();
+
+		when(businessService.addOrderItem(orderItem)).thenReturn("1");
+
+		// Construct the request
+		String requestBody = updatedExpectedResponse("addOrderItem.json");
+
+		RequestBuilder requestBuilder = MockMvcRequestBuilders.post("/orderItem")
+				.content(requestBody)
+				.contentType(MediaType.APPLICATION_JSON_VALUE);
+
+		// Perform the action and match results
+		mockMvc.perform(requestBuilder).andExpect(status().isCreated()).andExpect(header().exists(HttpHeaders.LOCATION))
+				.andExpect(header().string(HttpHeaders.LOCATION, CoreMatchers.containsString("/orderItem/1")));
 
 	}
 

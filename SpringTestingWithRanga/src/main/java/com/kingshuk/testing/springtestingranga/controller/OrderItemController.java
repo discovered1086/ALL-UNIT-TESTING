@@ -1,6 +1,7 @@
 package com.kingshuk.testing.springtestingranga.controller;
 
 import java.math.BigDecimal;
+import java.net.URI;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -8,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kingshuk.testing.springtestingranga.model.OrderItem;
@@ -37,6 +40,13 @@ public class OrderItemController {
 	@GetMapping(path = "/all-items-from-database", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<OrderItem>> getAllOrderItemsFroomServiceLayer() {
 		return ResponseEntity.ok(businessService.getAllOrderItem());
+	}
+	
+	@PostMapping(path = "/orderItem", consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Object> addOrderItem(@RequestBody OrderItem orderItem) {
+		String orderId = businessService.addOrderItem(orderItem);
+
+		return ResponseEntity.created(URI.create("/orderItem/"+orderId)).build();
 	}
 
 }
